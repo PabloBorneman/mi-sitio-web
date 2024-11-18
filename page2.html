@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- Site made with Mobirise Website Builder v5.9.18, https://mobirise.com -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="generator" content="Mobirise v5.9.18, mobirise.com">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/photo-1653566031535-bcf33e1c2893.jpeg" type="image/x-icon">
         <meta name="description" content="Esta plataforma conecta a candidatos con oportunidades laborales, facilitando la búsqueda y postulación a empleos de manera rápida y sencilla.">
@@ -20,16 +18,30 @@
         <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;700&display=swap&display=swap"></noscript>
         <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=9Opm5c">
         <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=9Opm5c" type="text/css">
-      
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MSTK7FLWW"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-1MSTK7FLWW');
-        </script>
-      </head>      
+        <!-- Estilo personalizado para ajustar el tamaño del modal -->
+        <style>
+            /* Ajustes para el tamaño y centrado del modal */
+            .modal-dialog {
+                max-width: 400px; /* Ajuste del ancho máximo */
+                margin: 1.75rem auto; /* Centrado */
+            }
+            .modal-content {
+                max-height: 250px; /* Limita más la altura del modal */
+                overflow-y: auto; /* Agrega scroll si el contenido excede */
+            }
+            .modal-header {
+                text-align: center; /* Centra el texto del encabezado */
+                justify-content: center; /* Asegura que el título esté centrado */
+            }
+            .modal-body {
+                text-align: center; /* Centra el texto */
+                padding: 5px; /* Reduce el espacio interno */
+            }
+            .modal-footer {
+                justify-content: center; /* Centra el botón en el pie del modal */
+            }
+        </style>        
+    </head>      
 <body>
   <section data-bs-version="5.1" class="menu menu2 cid-uugv4lut3r" once="menu" id="menu02-p">
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
@@ -71,14 +83,7 @@
                     </h3>
                 </div>
                 <div class="col-lg-12 mx-auto mbr-form" data-form-type="formoid">
-                    <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name" enctype="multipart/form-data">
-                        <input type="hidden" name="email" data-form-email="true" value="...">
-                        <div class="row">
-                            <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the form!</div>
-                            <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
-                                Oops...! some problem!
-                            </div>
-                        </div>
+                    <form class="mbr-form form-with-styler">
                         <div class="dragArea row">
                             <div class="col-md col-sm-12 form-group mb-3" data-for="name">
                                 <input type="text" name="name" placeholder="Name" data-form-field="name" class="form-control" value="" id="name-form03-x" required>
@@ -92,13 +97,12 @@
                             <div class="col-12 form-group mb-3" data-for="textarea">
                                 <textarea name="textarea" placeholder="Message" data-form-field="textarea" class="form-control" id="textarea-form03-x"></textarea>
                             </div>
-                            <!-- Campo para subir el CV -->
                             <div class="col-12 form-group mb-3" data-for="cv">
                                 <label for="cv-upload" class="form-label">Adjunta tu CV:</label>
                                 <input type="file" name="cv" id="cv-upload" accept=".pdf,.doc,.docx" class="form-control" data-form-field="cv" required>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
-                                <button type="submit" class="btn btn-primary display-7">
+                                <button type="button" id="postularme-btn" class="btn btn-primary display-7">
                                     Postularme
                                 </button>
                             </div>
@@ -115,22 +119,41 @@
     </div>
 </section>
 
-<section data-bs-version="5.1" class="footer4 cid-uugv4pi8uS" once="footers" id="footer04-w">
-    <div class="container">
-        <div class="media-container-row align-center mbr-white">
-            <div class="col-12">
-                <p class="mbr-text mb-0 mbr-fonts-style display-7">
-                    © Copyright 2025 Mobirise - All Rights Reserved
-                </p>
+<!-- Modal de confirmación -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="modalLabel">¡Postulación exitosa!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¡Has sido postulado con éxito! Serás redirigido a la página principal.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="redirect-btn">Aceptar</button>
             </div>
         </div>
     </div>
-</section>
+</div>
+
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>  
 <script src="assets/smoothscroll/smooth-scroll.js"></script>  
 <script src="assets/ytplayer/index.js"></script>  
 <script src="assets/dropdown/js/navbar-dropdown.js"></script>  
 <script src="assets/theme/js/script.js"></script>  
-<script src="assets/formoid/formoid.min.js"></script>  
+<script>
+    // Evento para el botón "Postularme"
+    document.getElementById("postularme-btn").addEventListener("click", function () {
+        // Mostrar el modal de confirmación
+        const confirmationModal = new bootstrap.Modal(document.getElementById("confirmationModal"));
+        confirmationModal.show();
+    });
+
+    // Redirección al index.html al hacer clic en "Aceptar"
+    document.getElementById("redirect-btn").addEventListener("click", function () {
+        window.location.href = "index.html";
+    });
+</script>
 </body>
 </html>
