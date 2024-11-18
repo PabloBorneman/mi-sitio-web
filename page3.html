@@ -4,7 +4,6 @@
         <!-- Site made with Mobirise Website Builder v5.9.18, https://mobirise.com -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="generator" content="Mobirise v5.9.18, mobirise.com">
         <meta name="viewport" content="width=device-width, minimum-scale=1">
         <link rel="shortcut icon" href="assets/images/photo-1653566031535-bcf33e1c2893.jpeg" type="image/x-icon">
         <meta name="description" content="Esta plataforma conecta a candidatos con oportunidades laborales, facilitando la búsqueda y postulación a empleos de manera rápida y sencilla.">
@@ -20,15 +19,28 @@
         <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;700&display=swap&display=swap"></noscript>
         <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=UGIKGr">
         <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=UGIKGr" type="text/css">
-      
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MSTK7FLWW"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-1MSTK7FLWW');
-        </script>
+        <!-- Estilo personalizado -->
+        <style>
+            .modal-dialog {
+                max-width: 400px;
+                margin: 1.75rem auto;
+            }
+            .modal-content {
+                max-height: 250px;
+                overflow-y: auto;
+            }
+            .modal-header {
+                text-align: center;
+                justify-content: center;
+            }
+            .modal-body {
+                text-align: center;
+                padding: 5px;
+            }
+            .modal-footer {
+                justify-content: center;
+            }
+        </style>
     </head>      
 <body>
   <section data-bs-version="5.1" class="menu menu2 cid-uugz9NaWl0" once="menu" id="menu02-z">
@@ -73,7 +85,6 @@
                     </h3>
                 </div>
                 <div class="col-lg-12 mx-auto mbr-form" data-form-type="formoid">
-                    <!-- Botones de Registro con Google y Facebook -->
                     <div class="mb-4 text-center">
                         <button class="btn btn-danger display-7 mb-3" style="padding: 10px 20px; border-radius: 5px;" onclick="window.location.href='https://accounts.google.com/o/oauth2/auth';">
                             Continuar con Google
@@ -82,23 +93,19 @@
                             Continuar con Facebook
                         </button>
                     </div>
-                    <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name">
-                        <input type="hidden" name="email" data-form-email="true" value="hkHOXpDlBHn3v/upaX7XQ6dQgWd0dRYg0D0F9rZNhkMQ1tfoi4wa5TpJNXpo0krRArMUK1wlgmxHvSHYa6pvLIgisNOF7C0n8a7aT7IkuI0912CX7s3p7mnd+/KfpgOK">
+                    <form class="mbr-form form-with-styler">
                         <div class="dragArea row">
                             <div class="col-md col-sm-12 form-group mb-3" data-for="name">
-                                <input type="text" name="name" placeholder="Name" data-form-field="name" class="form-control" value="" id="name-form03-y">
+                                <input type="text" name="name" placeholder="Name" data-form-field="name" class="form-control" id="name-form03-y" required>
                             </div>
                             <div class="col-md col-sm-12 form-group mb-3" data-for="email">
-                                <input type="email" name="email" placeholder="E-mail" data-form-field="email" class="form-control" value="" id="email-form03-y">
+                                <input type="email" name="email" placeholder="E-mail" data-form-field="email" class="form-control" id="email-form03-y" required>
                             </div>
                             <div class="col-12 form-group mb-3" data-for="phone">
-                                <input type="tel" name="phone" placeholder="Phone" data-form-field="phone" class="form-control" value="" id="phone-form03-y">
-                            </div>
-                            <div class="col-12 form-group mb-3" data-for="textarea">
-                                <textarea name="textarea" placeholder="Message" data-form-field="textarea" class="form-control" id="textarea-form03-y"></textarea>
+                                <input type="tel" name="phone" placeholder="Phone" data-form-field="phone" class="form-control" id="phone-form03-y" required>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
-                                <button type="submit" class="btn btn-success display-7">
+                                <button type="button" id="registrarme-btn" class="btn btn-success display-7">
                                     Registrarme
                                 </button>
                             </div>
@@ -115,22 +122,36 @@
     </div>
   </section>
 
-  <section data-bs-version="5.1" class="footer4 cid-uugz9NNCH0" once="footers" id="footer04-10">
-    <div class="container">
-        <div class="media-container-row align-center mbr-white">
-            <div class="col-12">
-                <p class="mbr-text mb-0 mbr-fonts-style display-7">
-                    © Copyright 2025 Mobirise - All Rights Reserved
-                </p>
-            </div>
-        </div>
-    </div>
-  </section>
+  <!-- Modal de confirmación -->
+  <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title text-center" id="modalLabel">¡Registro exitoso!</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  ¡Has sido registrado con éxito! Serás redirigido a la página principal.
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-success" id="redirect-btn">Aceptar</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/smoothscroll/smooth-scroll.js"></script>
-  <script src="assets/ytplayer/index.js"></script>
-  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-  <script src="assets/theme/js/script.js"></script>
-  <script src="assets/formoid/formoid.min.js"></script>
+  <script>
+      // Evento para el botón "Registrarme"
+      document.getElementById("registrarme-btn").addEventListener("click", function () {
+          const confirmationModal = new bootstrap.Modal(document.getElementById("confirmationModal"));
+          confirmationModal.show();
+      });
+
+      // Redirección al index.html al hacer clic en "Aceptar"
+      document.getElementById("redirect-btn").addEventListener("click", function () {
+          window.location.href = "index.html";
+      });
+  </script>
 </body>
 </html>
